@@ -19,8 +19,11 @@
     "merge-stream": "^2.0.0"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "gulp-flatmap": "^1.0.2",
+    "gulp-fs": "^0.0.2",
     "gulp-image-resize": "^0.13.1",
-    "gulp-tinypng-compress": "^1.2.5"
+    "gulp-tinypng-compress": "^1.2.5",
+    "npm-max-dir-index": "^1.0.4"
   }
 }

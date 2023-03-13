@@ -7,7 +7,9 @@ var imagemin = require('gulp-imagemin');
 const sharpResponsive = require("gulp-sharp-responsive");
 
 
-gulp.task('images500', function () {
+
+
+gulp.task('small', function () {
   const origem = './files/**/*.jpg'
   var destino = 'public'
   var data = []
@@ -17,19 +19,18 @@ gulp.task('images500', function () {
   var streams = [];
   data.forEach(function(name){
     var stream = gulp.src(origem)
-      // console.log(gulp.path)
+      // console.log(name)
       .pipe(sharpResponsive({
         formats: [
           {width: 500}
-          // {width: 500, rename: { suffix: "-sm" }},
+          // {width: 500, rename: { suffix: "s" }},
           // {width: 1800, rename: { suffix: "-lg" }}
         ]
       }))
       .pipe(rename(function(path){
-        path.basename = path.dirname + '-' + path.basename;
+        path.basename = path.dirname + '-' + path.basename
         path.extname = '.jpg';
         path.dirname = path.dirname[0] + path.dirname[1] + path.dirname[2] + path.dirname[3] + path.dirname[4] + "/Small"
-        // console.log(path.dirname[1])
       }))
       .pipe(imagemin([
         imagemin.mozjpeg({quality: 90, progressive: true}),
@@ -41,7 +42,7 @@ gulp.task('images500', function () {
   return merge(streams);
 });
 
-gulp.task('images1800', function () {
+gulp.task('big', function () {
   const origem = './files/**/*.jpg'
   var destino = 'public'
   // var destinoBig = ''
